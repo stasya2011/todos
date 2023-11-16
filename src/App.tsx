@@ -1,10 +1,10 @@
-import logo from "./logo.svg";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import { useDispatch, useSelector } from "react-redux";
 import { ITask } from "./STORE/reducers/types";
-import { Button, Input } from "antd";
+import { Button, Input, Layout } from "antd";
 import ListTask from "./app/components/ListTasks/ListTask";
+import "./App.scss";
 
 function App() {
   const [taskTitle, setTaskTitle] = useState<string>("");
@@ -27,14 +27,14 @@ function App() {
     return;
   };
 
-  useEffect(() => {
-    console.log(tasks);
-  });
-
   return (
-    <div style={{ display: "flex", flexDirection: "column", width: 300 }}>
-      <img src={logo} alt="logo" />
-      <div>
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+      }}
+    >
+      <Layout className={"wrapper"}>
         <div style={{ display: "flex" }}>
           <Input
             value={taskTitle}
@@ -46,8 +46,12 @@ function App() {
             Add task
           </Button>
         </div>
-        <ListTask tasks={tasks} />
-      </div>
+        {tasks.length ? (
+          <ListTask tasks={tasks} />
+        ) : (
+          <h2>You haven't had tasks yet.</h2>
+        )}
+      </Layout>
     </div>
   );
 }

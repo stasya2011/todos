@@ -1,13 +1,34 @@
 import { ITask } from "../../../STORE/reducers/types";
 import ListItem from "../ListItem";
+import "./styles.scss";
+
 const ListTask = ({ tasks }: { tasks: ITask[] }) => {
   return (
-    <ul>
-      {tasks.length &&
-        tasks.map(
-          (task: ITask) =>
-            task.text && <ListItem text={task.text} id={task.id} />
+    <ul style={{ display: "flex", justifyContent: "space-between" }}>
+      <div className="list-col">
+        {tasks.map((task: ITask) =>
+          task.text && task.completed ? (
+            <ListItem
+              key={task.id}
+              text={task.text}
+              id={task.id}
+              completed={task.completed}
+            />
+          ) : null
         )}
+      </div>
+      <div className="list-col">
+        {tasks.map((task: ITask) =>
+          task.text && !task.completed ? (
+            <ListItem
+              key={task.id}
+              text={task.text}
+              id={task.id}
+              completed={task.completed}
+            />
+          ) : null
+        )}
+      </div>
     </ul>
   );
 };
