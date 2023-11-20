@@ -1,8 +1,13 @@
-import { Button, Checkbox } from "antd";
-import { DeleteFilled } from "@ant-design/icons";
-import { useDispatch } from "react-redux";
-import { Card } from "antd";
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { Button, Checkbox, Card } from "antd";
+import { DeleteFilled } from "@ant-design/icons";
+import {
+  DeleteTaskAction,
+  ToggleCheckboxAction,
+} from "../../STORE/action-creators";
+import { ThunkDispatch } from "@reduxjs/toolkit";
+import { IAction, ITask } from "../../STORE/reducers/types";
 
 const ListItem = ({
   id,
@@ -14,13 +19,11 @@ const ListItem = ({
   completed: boolean;
 }) => {
   const [isCompleted, setIsCompleted] = useState(completed);
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<ThunkDispatch<ITask[], undefined, IAction>>();
+
   const toggleCheckbox = (id: string) => {
     setIsCompleted(!isCompleted);
-    dispatch({
-      type: "TOGGLE_CHECKBOX",
-      payload: { id, completed: !isCompleted },
-    });
+    dispatch(ToggleCheckboxAction({ id, completed: !isCompleted }));
   };
 
   return (
@@ -43,7 +46,7 @@ const ListItem = ({
         </div>
 
         <Button
-          onClick={() => dispatch({ type: "DELETE_TASK", payload: id })}
+          onClick={() => dispatch(DeleteTaskAction(id))}
           type="primary"
           icon={<DeleteFilled />}
         />

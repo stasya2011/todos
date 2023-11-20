@@ -7,16 +7,21 @@ export interface ITask {
 }
 
 export interface IAddTaskAction {
-  type: string;
+  type: Actions.CREATE_TASK;
   payload: IPayload;
 }
 
 export interface IDeleteTaskAction {
-  type: string;
+  type: Actions.DELETE_TASK;
   payload: string;
 }
 
-export type IAction = IAddTaskAction | IDeleteTaskAction;
+export interface IToggleCheckbox {
+  type: string;
+  payload: { id: string; completed: boolean };
+}
+
+export type IAction = IAddTaskAction | IDeleteTaskAction | IToggleCheckbox;
 
 export type IPayload = Exclude<ITask, "completed">;
 

@@ -38,6 +38,8 @@ export const rootReducer = (
         return updatedStateAfterToggling;
       }
       return state;
+    case "FETCH_DATA":
+      return state;
     default:
       return state;
   }
