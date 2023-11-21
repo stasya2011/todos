@@ -6,13 +6,15 @@ export const postsReducer = (
   action: { type: string; payload: any }
 ) => {
   switch (action.type) {
+    case "SET_IS_LOADING":
+      return { ...state, isError: false, isLoading: action.payload };
     case "FETCHING_DATA":
       return {
         ...state,
         posts: action.payload,
       };
-    case "FETCHED_DATA":
-      return state;
+    case "SET_IS_ERROR":
+      return { ...state, isLoading: false, isError: action.payload };
     default:
       return state;
   }

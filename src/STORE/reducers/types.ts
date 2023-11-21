@@ -35,3 +35,5 @@ export interface IPosts {
   isLoading: boolean;
   posts: any[];
 }
+
+export type listOfPosts = Exclude<IPosts, "posts">;

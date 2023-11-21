@@ -6,7 +6,7 @@
 }
 
 .header {
-    margin-bottom: 50px;
+    margin-bottom: 20px;
 
     a {
         font-size: 16px;
@@ -15,5 +15,30 @@
         &:not(.active) {
             color: white;
         }
+    }
+}
+
+.active {
+    color: teal;
+    font-weight: 700;
+}
+
+.animated-box {
+    width: 100px;
+    height: 100px;
+    margin-top: 200px;
+}
+
+.rotate {
+    animation: rotateAnimation 3s ease-in-out infinite;
+}
+
+@keyframes rotateAnimation {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
     }
 }

@@ -20,7 +20,7 @@ function App() {
             style={({ isActive }) => {
               return {
                 fontWeight: isActive ? "bold" : "400",
-                color: isActive ? "blue" : "white",
+                color: isActive ? "teal" : "white",
               };
             }}
           >

@@ -20,7 +20,6 @@ function Todos() {
   const addInfo = () => {
     if (taskTitle) {
       dispatch(CreateTaskAction({ text: taskTitle, id: uuidv4() }));
-
       setTaskTitle("");
     }
     return;
@@ -40,21 +39,22 @@ function Todos() {
           type="text"
           style={{ marginLeft: 10 }}
         />
-        <Button onClick={addInfo} type="primary" style={{ marginLeft: 10 }}>
-          Add task
-        </Button>
         <Button
-          onClick={() => console.log("+++")}
+          onClick={addInfo}
           type="primary"
-          style={{ marginLeft: 10 }}
+          style={{
+            marginLeft: 10,
+            marginRight: 10,
+            backgroundColor: "teal",
+          }}
         >
-          Fetch data
+          Add task
         </Button>
       </div>
       {tasks.length ? (
         <ListTask tasks={tasks} />
       ) : (
-        <h2>You haven't had tasks yet.</h2>
+        <h2 style={{ marginLeft: "16px" }}>You haven't had tasks yet.</h2>
       )}
     </div>
   );

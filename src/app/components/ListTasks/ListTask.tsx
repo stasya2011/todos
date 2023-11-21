@@ -4,7 +4,7 @@ import "./styles.scss";
 
 const ListTask = ({ tasks }: { tasks: ITask[] }) => {
   return (
-    <ul style={{ display: "flex", justifyContent: "space-between" }}>
+    <ul className="list">
       <div className="list-col">
         {tasks.map((task: ITask) =>
           task.text && task.completed ? (
