@@ -1,0 +1,41 @@
+.wrapper {
+  width: 1000px;
+  height: 100vh;
+  border: 5px solid 0;
+  margin: 0 auto;
+}
+
+.header {
+  margin-bottom: 20px;
+}
+.header a {
+  font-size: 16px;
+  margin-right: 10px;
+}
+.header a:not(.active) {
+  color: white;
+}
+
+.active {
+  color: teal;
+  font-weight: 700;
+}
+
+.animated-box {
+  width: 100px;
+  height: 100px;
+  margin-top: 200px;
+}
+
+.rotate {
+  animation: rotateAnimation 3s ease-in-out infinite;
+}
+
+@keyframes rotateAnimation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}/*# sourceMappingURL=App.css.map */

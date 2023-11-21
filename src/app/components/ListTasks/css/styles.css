@@ -1,0 +1,11 @@
+.list-col {
+  width: 400px;
+}
+
+.list {
+  display: flex;
+  justify-content: space-between;
+  margin-left: 16px;
+  margin-right: 16px;
+  padding-left: 0;
+}/*# sourceMappingURL=styles.css.map */

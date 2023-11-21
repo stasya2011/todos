@@ -10,20 +10,20 @@ const Posts = () => {
   const dispatch = useDispatch();
   const state = useSelector((state: { posts: IPosts }) => state.posts);
 
+  const fetchPosts = async () => {
+    try {
+      const data = await fetch(
+        "https://jsonplaceholder.typicode.com/todos?_limit=9"
+      );
+      const res = await data.json();
+      dispatch({ type: "FETCHING_DATA", payload: res });
+    } catch (error) {
+      dispatch({ type: "SET_IS_ERROR", payload: true });
+    }
+  };
+
   useEffect(() => {
     dispatch({ type: "SET_IS_LOADING", payload: true });
-
-    const fetchPosts = async () => {
-      try {
-        const data = await fetch(
-          "https://jsonplaceholder.typicode.com/todos?_limit=9"
-        );
-        const res = await data.json();
-        dispatch({ type: "FETCHING_DATA", payload: res });
-      } catch (error) {
-        dispatch({ type: "SET_IS_ERROR", payload: true });
-      }
-    };
 
     setTimeout(() => {
       fetchPosts();

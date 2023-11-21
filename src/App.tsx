@@ -9,6 +9,7 @@ import { Header } from "antd/es/layout/layout";
 import Posts from "./app/components/Posts/Posts";
 import Todos from "./app/components/Todos/Todos";
 import "./App.scss";
+import ErrorPage from "./app/components/Error/Error";
 
 function App() {
   return (
@@ -31,7 +32,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Todos />} />
           <Route path="/posts" element={<Posts />} />
-          <Route path="*" element={<h2>Error...</h2>} />
+          <Route path="*" element={<ErrorPage />} />
         </Routes>
       </Router>
     </Layout>
