@@ -1,7 +1,7 @@
 import { inishialState } from "../state";
 import { ITask, Actions } from "./types";
 
-export const rootReducer = (
+export const todosReducer = (
   state: ITask[] = inishialState,
   action: any
 ): ITask[] => {

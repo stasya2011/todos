@@ -22,11 +22,16 @@ export interface IToggleCheckbox {
 }
 
 export type IAction = IAddTaskAction | IDeleteTaskAction | IToggleCheckbox;
-
 export type IPayload = Exclude<ITask, "completed">;
-
 export enum Actions {
   CREATE_TASK = "CREATE_TASK",
   DELETE_TASK = "DELETE_TASK",
   TOGGLE_CHECKBOX = "TOGGLE_CHECKBOX",
+}
+
+//! posts:
+export interface IPosts {
+  isError: boolean;
+  isLoading: boolean;
+  posts: any[];
 }

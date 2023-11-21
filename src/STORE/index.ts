@@ -1,7 +1,9 @@
-import { createStore, compose, applyMiddleware } from "redux";
-import { rootReducer } from "./reducers";
+import { createStore, compose, applyMiddleware, combineReducers } from "redux";
+import { todosReducer } from "./reducers/todos";
 import ReduxThunk from "redux-thunk";
+import { postsReducer } from "./reducers/posts";
 
+const rootReducer = combineReducers({ todosReducer, posts: postsReducer });
 export const store = createStore(
   rootReducer,
   compose(
