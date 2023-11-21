@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Button, Card, Flex, Image, Input } from "antd";
 import { IPosts } from "../../../STORE/reducers/types";
 import "./../../../App.scss";
+import PaginationComponent from "../pagination/Pagination";
 
 const Posts = () => {
   const [searchingString, setSearchingString] = useState<string>("");
@@ -10,25 +11,24 @@ const Posts = () => {
   const dispatch = useDispatch();
   const state = useSelector((state: { posts: IPosts }) => state.posts);
 
-  const fetchPosts = async () => {
+  const fetchPosts = async (page: number = 1) => {
     try {
+      dispatch({ type: "SET_IS_LOADING", payload: true });
       const data = await fetch(
-        "https://jsonplaceholder.typicode.com/todos?_limit=9"
+        `https://jsonplaceholder.typicode.com/todos?_limit=9&_page=${page}`
       );
       const res = await data.json();
       dispatch({ type: "FETCHING_DATA", payload: res });
+      dispatch({ type: "SET_IS_LOADING", payload: false });
     } catch (error) {
       dispatch({ type: "SET_IS_ERROR", payload: true });
     }
   };
 
   useEffect(() => {
-    dispatch({ type: "SET_IS_LOADING", payload: true });
-
     setTimeout(() => {
       fetchPosts();
-      dispatch({ type: "SET_IS_LOADING", payload: false });
-    }, 5000);
+    }, 1000);
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -57,7 +57,7 @@ const Posts = () => {
           value={searchingString}
           onChange={(e) => setSearchingString(e.target.value)}
         />
-        <Button onClick={() => console.log("+++ click +++ ")}>Search</Button>
+        {/* <Button onClick={() => console.log("+++ click +++ ")}>Search</Button> */}
       </Flex>
       <Flex wrap="wrap" gap={20} justify="center">
         {state.isLoading ? (
@@ -77,6 +77,9 @@ const Posts = () => {
         ) : (
           <h2>According to you, Nothing was found</h2>
         )}
+      </Flex>
+      <Flex justify="center">
+        <PaginationComponent fetch={fetchPosts} />
       </Flex>
     </>
   );

@@ -4,7 +4,7 @@ import { v4 as uuidv4 } from "uuid";
 import { ITask } from "../../../STORE/reducers/types";
 import { Button, Input } from "antd";
 import ListTask from "../ListTasks/ListTask";
-import { CreateTaskAction } from "../../../STORE/action-creators";
+import { CreateTaskAction } from "../../../STORE/action-creators/todos";
 import "../../../App.scss";
 
 function Todos() {
