@@ -7,6 +7,8 @@
 
 .header {
     margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
 
     a {
         font-size: 16px;
@@ -14,6 +16,25 @@
 
         &:not(.active) {
             color: white;
+        }
+    }
+}
+.weather {
+    color: teal;
+    display: flex;
+    font-size: 16px;
+    line-height: 22px;
+
+    &_info {
+        padding: 0;
+        margin: 10px 10px 0 0;
+        list-style-type: none;
+        text-align: right;
+
+        & li {
+            padding: 0;
+            margin: 0;
+           
         }
     }
 }

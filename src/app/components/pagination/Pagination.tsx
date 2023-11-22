@@ -1,4 +1,5 @@
 import { Pagination } from "antd";
+import "./pagination.scss";
 
 const PaginationComponent = ({
   fetch,
@@ -6,7 +7,12 @@ const PaginationComponent = ({
   fetch: (page: number) => Promise<void>;
 }) => {
   return (
-    <Pagination onChange={(e) => fetch(e)} defaultCurrent={1} total={50} />
+    <Pagination
+      className="pagination"
+      onChange={(e) => fetch(e)}
+      defaultCurrent={1}
+      total={50}
+    />
   );
 };
 

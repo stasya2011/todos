@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Button, Card, Flex, Image, Input } from "antd";
+import { Card, Flex, Image, Input } from "antd";
 import { IPosts } from "../../../STORE/reducers/types";
 import "./../../../App.scss";
 import PaginationComponent from "../pagination/Pagination";

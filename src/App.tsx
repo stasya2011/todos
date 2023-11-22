@@ -1,34 +1,16 @@
-import {
-  Route,
-  Routes,
-  BrowserRouter as Router,
-  NavLink,
-} from "react-router-dom";
+import { Route, Routes, BrowserRouter as Router } from "react-router-dom";
 import { Layout } from "antd";
-import { Header } from "antd/es/layout/layout";
 import Posts from "./app/components/Posts/Posts";
 import Todos from "./app/components/Todos/Todos";
-import "./App.scss";
+import HeaderComponent from "./app/components/header";
 import ErrorPage from "./app/components/Error/Error";
+import "./App.scss";
 
 function App() {
   return (
     <Layout className={"wrapper"}>
       <Router>
-        <Header className={"header"}>
-          <NavLink
-            to={"/posts"}
-            style={({ isActive }) => {
-              return {
-                fontWeight: isActive ? "bold" : "400",
-                color: isActive ? "teal" : "white",
-              };
-            }}
-          >
-            Posts
-          </NavLink>
-          <NavLink to={"/"}>Todos</NavLink>
-        </Header>
+        <HeaderComponent />
         <Routes>
           <Route path="/" element={<Todos />} />
           <Route path="/posts" element={<Posts />} />
