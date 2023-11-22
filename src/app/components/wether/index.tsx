@@ -19,10 +19,10 @@ const Weather = () => {
       const res = await data.json();
 
       setWeather(() => ({
-        text: res.current.condition.text,
+        text: res.current.condition ? res.current.condition?.text : "",
         temp: res.current.temp_c,
         name: res.location.name,
-        icon: res.current.condition.icon,
+        icon: res.current.condition ? res.current.condition?.icon : "",
       }));
     } catch (err) {
       console.error(err);
@@ -31,6 +31,7 @@ const Weather = () => {
 
   useEffect(() => {
     featchData(weather.name);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

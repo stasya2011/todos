@@ -34,7 +34,7 @@ const Posts = () => {
   }, []);
 
   useEffect(() => {
-    const searchingData = state.posts.filter((post) => {
+    const searchingData = state.posts.filter((post): void => {
       return post.title.includes(searchingString);
     });
     setSearchedValue((prev) => {

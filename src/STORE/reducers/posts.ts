@@ -3,8 +3,8 @@ import { IPosts } from "./types";
 
 export const postsReducer = (
   state: IPosts = inishialPostsState,
-  action: { type: string; payload: any }
-) => {
+  action: any
+): IPosts => {
   switch (action.type) {
     case "SET_IS_LOADING":
       return { ...state, isError: false, isLoading: action.payload };

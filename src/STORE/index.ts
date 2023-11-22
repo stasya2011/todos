@@ -1,14 +1,11 @@
-import { createStore, compose, applyMiddleware, combineReducers } from "redux";
+import { configureStore } from "@reduxjs/toolkit";
 import { todosReducer } from "./reducers/todos";
-import ReduxThunk from "redux-thunk";
 import { postsReducer } from "./reducers/posts";
 
-const rootReducer = combineReducers({ todosReducer, posts: postsReducer });
-export const store = createStore(
-  rootReducer,
-  compose(
-    applyMiddleware(ReduxThunk)
-    // window.__REDUX_DEVTOOLS_EXTENSION__ &&
-    //   window.__REDUX_DEVTOOLS_EXTENSION__())
-  )
-);
+const rootReducer = { todosReducer, posts: postsReducer };
+
+export const store = configureStore({
+  reducer: rootReducer,
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware(),
+  devTools: process.env.NODE_ENV !== "production",
+});

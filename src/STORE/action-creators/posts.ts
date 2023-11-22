@@ -1,6 +1,11 @@
-import { AnyAction, Dispatch } from "@reduxjs/toolkit";
+import { Dispatch } from "@reduxjs/toolkit";
 
-export const fetchData = () => async (dispatch: Dispatch<AnyAction>) => {
+interface IFetchDataAction {
+  type: string;
+  payload: any;
+}
+
+export const fetchData = () => async (dispatch: Dispatch<IFetchDataAction>) => {
   const data = await fetch("url");
   const res = await data.json();
 
