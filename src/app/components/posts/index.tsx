@@ -10,12 +10,11 @@ const Posts = () => {
   const [searchedValue, setSearchedValue] = useState<IPosts[]>([]);
   const dispatch = useDispatch();
   const state = useSelector((state: { posts: IPosts }) => state.posts);
-
   const fetchPosts = async (page: number = 1) => {
     try {
       dispatch({ type: "SET_IS_LOADING", payload: true });
       const data = await fetch(
-        `https://jsonplaceholder.typicode.com/to-do-list?_limit=9&_page=${page}`
+        `https://jsonplaceholder.typicode.com/todos?_limit=9&_page=${page}`
       );
       const res = await data.json();
       dispatch({ type: "FETCHING_DATA", payload: res });
@@ -57,7 +56,6 @@ const Posts = () => {
           value={searchingString}
           onChange={(e) => setSearchingString(e.target.value)}
         />
-        {/* <Button onClick={() => console.log("+++ click +++ ")}>Search</Button> */}
       </Flex>
       <Flex wrap="wrap" gap={20} justify="center">
         {state.isLoading ? (
@@ -75,7 +73,7 @@ const Posts = () => {
             </Card>
           ))
         ) : (
-          <h2>According to you, Nothing was found</h2>
+          <h2>According to you, Nothing was found.</h2>
         )}
       </Flex>
       <Flex justify="center">
