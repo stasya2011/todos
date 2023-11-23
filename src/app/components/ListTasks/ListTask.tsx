@@ -1,4 +1,4 @@
-import { ITask } from "../../../STORE/reducers/types";
+import { ITask } from "../../../STORE/types";
 import ListItem from "../ListItem";
 import "./styles.scss";
 

@@ -1,5 +1,5 @@
-import { ITask } from "../reducers/types";
-import { IPosts } from "../reducers/types";
+import { ITask } from "../types";
+import { IPosts } from "../types";
 
 export const initialState: ITask[] = [];
 export const initialPostsState: IPosts = {

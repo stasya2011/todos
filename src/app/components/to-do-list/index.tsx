@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { v4 as uuidv4 } from "uuid";
-import { ITask } from "../../../STORE/reducers/types";
+import { ITask } from "../../../STORE/types";
 import { Button, Input } from "antd";
 import ListTask from "../ListTasks/ListTask";
 import { createTask } from "../../../STORE/slices/todos";

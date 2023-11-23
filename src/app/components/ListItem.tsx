@@ -4,7 +4,7 @@ import { Button, Checkbox, Card } from "antd";
 import { DeleteFilled } from "@ant-design/icons";
 import { deleteTask, toggleCheckbox } from "../../STORE/slices/todos";
 import { ThunkDispatch } from "@reduxjs/toolkit";
-import { IAction, ITask } from "../../STORE/reducers/types";
+import { IAction, ITask } from "../../STORE/types";
 
 const ListItem = ({
   id,
