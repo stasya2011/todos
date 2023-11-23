@@ -5,7 +5,7 @@ import { DeleteFilled } from "@ant-design/icons";
 import {
   DeleteTaskAction,
   ToggleCheckboxAction,
-} from "../../STORE/action-creators/todos";
+} from "../../STORE/action-creators/to-do-list";
 import { ThunkDispatch } from "@reduxjs/toolkit";
 import { IAction, ITask } from "../../STORE/reducers/types";
 

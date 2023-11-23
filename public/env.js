@@ -1,3 +1,1 @@
-window.env = {
-  WEATHER_API_KEY: "d4700316ae8c426889871740232211",
-};
+window.env = {};

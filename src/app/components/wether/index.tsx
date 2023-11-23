@@ -17,15 +17,20 @@ const Weather = () => {
         `https://api.weatherapi.com/v1/current.json?key=${WEATHER_API_KEY}&q=${city}&aqi=no`
       );
       const res = await data.json();
+      if (!res.error) {
+        setWeather(() => {
+          const updated = {
+            text: res.current.condition ? res.current.condition?.text : "",
+            temp: res.current.temp_c,
+            name: res.location.name,
+            icon: res.current.condition ? res.current.condition?.icon : "",
+          };
 
-      setWeather(() => ({
-        text: res.current.condition ? res.current.condition?.text : "",
-        temp: res.current.temp_c,
-        name: res.location.name,
-        icon: res.current.condition ? res.current.condition?.icon : "",
-      }));
+          return updated;
+        });
+      }
     } catch (err) {
-      console.error(err);
+      console.error("ERROR", err);
     }
   }, []);
 
@@ -36,7 +41,7 @@ const Weather = () => {
 
   return (
     <span className="weather">
-      {weather ? (
+      {weather.icon ? (
         <>
           <ul className="weather_info">
             <li>

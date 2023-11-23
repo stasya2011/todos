@@ -17,7 +17,7 @@ const HeaderComponent = () => {
         >
           Posts
         </NavLink>
-        <NavLink to={"/"}>Todos</NavLink>
+        <NavLink to={"/"}>ToDoList</NavLink>
       </span>
       <Weather />
     </Header>
