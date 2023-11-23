@@ -1,17 +1,16 @@
 import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
 import { Card, Flex, Image, Input } from "antd";
-import { IList, IPosts } from "../../../STORE/types";
+import { IList } from "../../../STORE/types";
 import PaginationComponent from "../pagination/Pagination";
 import { fetchPosts } from "../../../STORE/slices/posts";
-import { AppDispatch } from "../../../STORE";
+import { useAppDispatch, useAppSelector } from "../../../STORE/hooks";
 import "./../../../App.scss";
 
 const Posts = () => {
   const [searchingString, setSearchingString] = useState<string>("");
   const [searchedValue, setSearchedValue] = useState<IList[]>([]);
-  const dispatch: AppDispatch = useDispatch();
-  const state = useSelector((state: { posts: IPosts }) => state.posts);
+  const dispatch = useAppDispatch();
+  const state = useAppSelector((state) => state.posts);
   const fetchData = async (page: number) => {
     dispatch(fetchPosts(page));
   };

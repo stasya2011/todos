@@ -1,8 +1,8 @@
-import { configureStore } from "@reduxjs/toolkit";
+import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import todosReducer from "./slices/todos";
 import postsReducer from "./slices/posts";
 
-const rootReducer = { todosReducer, posts: postsReducer };
+const rootReducer = combineReducers({ todosReducer, posts: postsReducer });
 
 export const store = configureStore({
   reducer: rootReducer,
@@ -10,5 +10,6 @@ export const store = configureStore({
   devTools: process.env.NODE_ENV !== "production",
 });
 
+export type RootState = ReturnType<typeof rootReducer>;
 export type RootStore = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;

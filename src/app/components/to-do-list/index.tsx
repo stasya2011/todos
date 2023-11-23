@@ -1,18 +1,15 @@
 import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
 import { v4 as uuidv4 } from "uuid";
-import { ITask } from "../../../STORE/types";
 import { Button, Input } from "antd";
 import ListTask from "../ListTasks/ListTask";
 import { createTask } from "../../../STORE/slices/todos";
 import "../../../App.scss";
+import { useAppDispatch, useAppSelector } from "../../../STORE/hooks";
 
 function ToDoList() {
   const [taskTitle, setTaskTitle] = useState<string>("");
-  const dispatch = useDispatch();
-  const tasks: ITask[] = useSelector(
-    (state: { todosReducer: ITask[] }): ITask[] => state.todosReducer
-  );
+  const dispatch = useAppDispatch();
+  const tasks = useAppSelector((state) => state.todosReducer);
   const createTaskTitle = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (!e.target.value) return;
     setTaskTitle(() => e.target.value);
