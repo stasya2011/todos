@@ -2,9 +2,14 @@ import { useState, useEffect, useCallback, useRef } from "react";
 import env from "react-dotenv";
 
 const WEATHER_API_KEY = env.WEATHER_API_KEY;
-
+interface IWeather {
+  name: string;
+  text: string;
+  icon: string;
+  temp: number;
+}
 const Weather = () => {
-  const [weather, setWeather] = useState<any>({
+  const [weather, setWeather] = useState<IWeather>({
     name: "Vilnius",
     text: "",
     icon: "",

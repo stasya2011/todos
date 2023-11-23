@@ -1,47 +1,34 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Card, Flex, Image, Input } from "antd";
-import { IPosts } from "../../../STORE/reducers/types";
+import { IList, IPosts } from "../../../STORE/reducers/types";
 import PaginationComponent from "../pagination/Pagination";
-import {
-  setIsError,
-  setIsLoading,
-  setIsFeatching,
-} from "../../../STORE/slices/posts";
+import { fetchPosts } from "../../../STORE/slices/posts";
+import { AppDispatch } from "../../../STORE";
 import "./../../../App.scss";
 
 const Posts = () => {
   const [searchingString, setSearchingString] = useState<string>("");
-  const [searchedValue, setSearchedValue] = useState<IPosts[]>([]);
-  const dispatch = useDispatch();
+  const [searchedValue, setSearchedValue] = useState<IList[]>([]);
+  const dispatch: AppDispatch = useDispatch();
   const state = useSelector((state: { posts: IPosts }) => state.posts);
-  const fetchPosts = async (page: number = 1) => {
-    try {
-      dispatch(setIsLoading(true));
-      const data = await fetch(
-        `https://jsonplaceholder.typicode.com/todos?_limit=9&_page=${page}`
-      );
-      const res = await data.json();
-      dispatch(setIsFeatching(res));
-      dispatch(setIsLoading(false));
-    } catch (error) {
-      dispatch(setIsError(true));
-    }
+  const fetchData = async (page: number) => {
+    dispatch(fetchPosts(page));
   };
 
   useEffect(() => {
     setTimeout(() => {
-      fetchPosts();
+      dispatch(fetchPosts(1));
     }, 1000);
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
-    const searchingData = state.posts.filter((post): void => {
+    const searchingData = state.posts.filter((post) => {
       return post.title.includes(searchingString);
     });
-    setSearchedValue((prev) => {
+    setSearchedValue(() => {
       return [...searchingData];
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -66,7 +53,7 @@ const Posts = () => {
         {state.isLoading ? (
           <Image className="animated-box rotate" src="loading.svg" />
         ) : !searchingString ? (
-          state.posts.map((post) => (
+          state.posts.map((post: IList) => (
             <Card style={{ width: 300, height: 200 }}>
               <h2>{post.title}</h2>
             </Card>
@@ -82,7 +69,7 @@ const Posts = () => {
         )}
       </Flex>
       <Flex justify="center">
-        <PaginationComponent fetch={fetchPosts} />
+        <PaginationComponent fetch={fetchData} />
       </Flex>
     </>
   );

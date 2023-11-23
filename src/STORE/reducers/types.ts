@@ -33,7 +33,12 @@ export enum Actions {
 export interface IPosts {
   isError: boolean;
   isLoading: boolean;
-  posts: any[];
+  posts: IList[];
 }
 
-export type listOfPosts = Exclude<IPosts, "posts">;
+export interface IList {
+  userId: number;
+  id: number;
+  title: string;
+  completed: boolean;
+}
