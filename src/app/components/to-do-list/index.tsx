@@ -4,7 +4,7 @@ import { v4 as uuidv4 } from "uuid";
 import { ITask } from "../../../STORE/reducers/types";
 import { Button, Input } from "antd";
 import ListTask from "../ListTasks/ListTask";
-import { CreateTaskAction } from "../../../STORE/action-creators/to-do-list";
+import { createTask } from "../../../STORE/slices/todos";
 import "../../../App.scss";
 
 function ToDoList() {
@@ -19,7 +19,7 @@ function ToDoList() {
   };
   const addInfo = () => {
     if (taskTitle) {
-      dispatch(CreateTaskAction({ text: taskTitle, id: uuidv4() }));
+      dispatch(createTask({ text: taskTitle, id: uuidv4() }));
       setTaskTitle("");
     }
     return;

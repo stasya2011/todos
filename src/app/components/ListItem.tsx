@@ -2,10 +2,7 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { Button, Checkbox, Card } from "antd";
 import { DeleteFilled } from "@ant-design/icons";
-import {
-  DeleteTaskAction,
-  ToggleCheckboxAction,
-} from "../../STORE/action-creators/to-do-list";
+import { deleteTask, toggleCheckbox } from "../../STORE/slices/todos";
 import { ThunkDispatch } from "@reduxjs/toolkit";
 import { IAction, ITask } from "../../STORE/reducers/types";
 
@@ -21,11 +18,6 @@ const ListItem = ({
   const [isCompleted, setIsCompleted] = useState(completed);
   const dispatch = useDispatch<ThunkDispatch<ITask[], undefined, IAction>>();
 
-  const toggleCheckbox = (id: string) => {
-    setIsCompleted(!isCompleted);
-    dispatch(ToggleCheckboxAction({ id, completed: !isCompleted }));
-  };
-
   return (
     <Card style={{ marginTop: 16 }}>
       <li key={id} style={{ display: "flex", justifyContent: "space-between" }}>
@@ -37,7 +29,8 @@ const ListItem = ({
         >
           <Checkbox
             onChange={() => {
-              toggleCheckbox(id);
+              setIsCompleted(!isCompleted);
+              dispatch(toggleCheckbox({ id, completed: !isCompleted }));
             }}
             checked={isCompleted}
             style={{ marginRight: 10 }}
@@ -46,7 +39,7 @@ const ListItem = ({
         </div>
 
         <Button
-          onClick={() => dispatch(DeleteTaskAction(id))}
+          onClick={() => dispatch(deleteTask(id))}
           type="primary"
           icon={<DeleteFilled />}
         />

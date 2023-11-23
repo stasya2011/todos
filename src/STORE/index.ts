@@ -1,6 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { todosReducer } from "./reducers/to-do-list";
 import { postsReducer } from "./reducers/posts";
+import todosReducer from "./slices/todos";
 
 const rootReducer = { todosReducer, posts: postsReducer };
 

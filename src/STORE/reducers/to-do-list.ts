@@ -1,8 +1,8 @@
-import { inishialState } from "../state";
+import { initialState } from "../state";
 import { ITask, Actions } from "./types";
 
 export const todosReducer = (
-  state: ITask[] = inishialState,
+  state: ITask[] = initialState,
   action: any
 ): ITask[] => {
   switch (action.type) {
@@ -37,8 +37,6 @@ export const todosReducer = (
         });
         return updatedStateAfterToggling;
       }
-      return state;
-    case "FETCH_DATA":
       return state;
     default:
       return state;
