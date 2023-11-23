@@ -1,8 +1,8 @@
-import { inishialPostsState } from "../state";
+import { initialPostsState } from "../state";
 import { IPosts } from "./types";
 
 export const postsReducer = (
-  state: IPosts = inishialPostsState,
+  state: IPosts = initialPostsState,
   action: any
 ): IPosts => {
   switch (action.type) {

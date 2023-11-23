@@ -2,8 +2,13 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Card, Flex, Image, Input } from "antd";
 import { IPosts } from "../../../STORE/reducers/types";
-import "./../../../App.scss";
 import PaginationComponent from "../pagination/Pagination";
+import {
+  setIsError,
+  setIsLoading,
+  setIsFeatching,
+} from "../../../STORE/slices/posts";
+import "./../../../App.scss";
 
 const Posts = () => {
   const [searchingString, setSearchingString] = useState<string>("");
@@ -12,15 +17,15 @@ const Posts = () => {
   const state = useSelector((state: { posts: IPosts }) => state.posts);
   const fetchPosts = async (page: number = 1) => {
     try {
-      dispatch({ type: "SET_IS_LOADING", payload: true });
+      dispatch(setIsLoading(true));
       const data = await fetch(
         `https://jsonplaceholder.typicode.com/todos?_limit=9&_page=${page}`
       );
       const res = await data.json();
-      dispatch({ type: "FETCHING_DATA", payload: res });
-      dispatch({ type: "SET_IS_LOADING", payload: false });
+      dispatch(setIsFeatching(res));
+      dispatch(setIsLoading(false));
     } catch (error) {
-      dispatch({ type: "SET_IS_ERROR", payload: true });
+      dispatch(setIsError(true));
     }
   };
 
