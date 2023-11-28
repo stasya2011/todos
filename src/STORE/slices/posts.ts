@@ -10,7 +10,7 @@ export const fetchPosts = createAsyncThunk(
     return await data.json();
   }
 );
-//
+
 const postsSlice = createSlice({
   name: "posts",
   initialState: initialPostsState,
