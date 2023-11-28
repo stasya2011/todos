@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
-import { Card, Flex, Image, Input } from "antd";
+import { Card, Flex, Input } from "antd";
 import { IList } from "../../../STORE/types";
 import PaginationComponent from "../pagination/Pagination";
 import { fetchPosts } from "../../../STORE/slices/posts";
 import { useAppDispatch, useAppSelector } from "../../../STORE/hooks";
-import "./../../../App.scss";
+import Loading from "../loading";
 
 const Posts = () => {
   const [searchingString, setSearchingString] = useState<string>("");
@@ -50,7 +50,7 @@ const Posts = () => {
       </Flex>
       <Flex wrap="wrap" gap={20} justify="center">
         {state.isLoading ? (
-          <Image className="animated-box rotate" src="loading.svg" />
+          <Loading />
         ) : !searchingString ? (
           state.posts.map((post: IList) => (
             <Card style={{ width: 300, height: 200 }}>
