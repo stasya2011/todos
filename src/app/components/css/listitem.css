@@ -1,0 +1,17 @@
+.ant-checkbox .ant-checkbox-inner {
+  width: 25px;
+  height: 25px;
+}
+
+.ant-checkbox-checked .ant-checkbox-inner {
+  background-color: teal;
+  border-color: rgba(147, 147, 150, 0.333);
+  width: 25px;
+  height: 25px;
+}
+
+.ant-checkbox-inner::after {
+  width: 9px !important;
+  height: 17px !important;
+  top: 45% !important;
+}/*# sourceMappingURL=listitem.css.map */

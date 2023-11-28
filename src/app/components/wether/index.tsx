@@ -1,7 +1,5 @@
 import { useState, useEffect, useCallback, useRef } from "react";
-import env from "react-dotenv";
 
-const WEATHER_API_KEY = env.WEATHER_API_KEY;
 interface IWeather {
   name: string;
   text: string;
@@ -9,6 +7,7 @@ interface IWeather {
   temp: number;
 }
 const Weather = () => {
+  const WEATHER_API_KEY = process.env.REACT_APP_WEATHER_API_KEY;
   const [weather, setWeather] = useState<IWeather>({
     name: "Vilnius",
     text: "",
@@ -36,6 +35,7 @@ const Weather = () => {
     } catch (err) {
       console.error("ERROR", err);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {

@@ -1,10 +1,11 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { Button, Checkbox, Card } from "antd";
-import { DeleteFilled } from "@ant-design/icons";
+import { Checkbox, Card } from "antd";
+import { CloseCircleTwoTone } from "@ant-design/icons";
 import { deleteTask, toggleCheckbox } from "../../STORE/slices/todos";
 import { ThunkDispatch } from "@reduxjs/toolkit";
 import { IAction, ITask } from "../../STORE/types";
+import "./listitem.scss";
 
 const ListItem = ({
   id,
@@ -19,7 +20,7 @@ const ListItem = ({
   const dispatch = useDispatch<ThunkDispatch<ITask[], undefined, IAction>>();
 
   return (
-    <Card style={{ marginTop: 16 }}>
+    <Card loading={false} style={{ marginTop: 16 }}>
       <li key={id} style={{ display: "flex", justifyContent: "space-between" }}>
         <div
           style={{
@@ -37,12 +38,12 @@ const ListItem = ({
           />
           <div>{text}</div>
         </div>
-
-        <Button
+        <CloseCircleTwoTone
+          twoToneColor={"#eb2f96"}
+          style={{ fontSize: 25 }}
           onClick={() => dispatch(deleteTask(id))}
-          type="primary"
-          icon={<DeleteFilled />}
         />
+        {/* <h3>date of creation: {}</h3> */}
       </li>
     </Card>
   );
