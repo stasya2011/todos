@@ -1,5 +1,5 @@
 import { ITask } from "../../../STORE/types";
-import ListItem from "../ListItem";
+import ListItem from "../listItem/ListItem";
 import "./styles.scss";
 
 const ListTask = ({ tasks }: { tasks: ITask[] }) => {

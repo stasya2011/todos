@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Card, Flex, Input } from "antd";
 import { IList } from "../../../STORE/types";
 import PaginationComponent from "../pagination/Pagination";
@@ -14,6 +15,7 @@ const Posts = () => {
   const fetchData = async (page: number) => {
     dispatch(fetchPosts(page));
   };
+  const navigate = useNavigate();
 
   useEffect(() => {
     setTimeout(() => {
@@ -53,7 +55,10 @@ const Posts = () => {
           <Loading />
         ) : !searchingString ? (
           state.posts.map((post: IList) => (
-            <Card style={{ width: 300, height: 200 }}>
+            <Card
+              style={{ width: 300, height: 200, cursor: "pointer" }}
+              onClick={() => navigate(`/posts/${post.id}`)}
+            >
               <h2>{post.title}</h2>
             </Card>
           ))

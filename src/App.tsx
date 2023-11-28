@@ -3,6 +3,7 @@ import { Layout } from "antd";
 import Posts from "./app/components/posts";
 import ToDoList from "./app/components/to-do-list";
 import HeaderComponent from "./app/components/header";
+import PostById from "./app/components/pageById";
 import ErrorPage from "./app/components/Error";
 import "./App.scss";
 
@@ -14,6 +15,7 @@ function App() {
         <Routes>
           <Route path="/" element={<ToDoList />} />
           <Route path="/posts" element={<Posts />} />
+          <Route path="/posts/:id" element={<PostById />} />
           <Route path="*" element={<ErrorPage />} />
         </Routes>
       </Router>

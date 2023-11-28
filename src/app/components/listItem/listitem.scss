@@ -10,7 +10,9 @@
     height: 25px;
 }
 
-
+.text-wrap {
+    word-break: break-all;
+}
 
 .ant-checkbox-inner::after {
     width: 9px !important;

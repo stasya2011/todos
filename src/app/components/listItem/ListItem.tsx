@@ -2,9 +2,9 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { Checkbox, Card } from "antd";
 import { CloseCircleTwoTone } from "@ant-design/icons";
-import { deleteTask, toggleCheckbox } from "../../STORE/slices/todos";
+import { deleteTask, toggleCheckbox } from "../../../STORE/slices/todos";
 import { ThunkDispatch } from "@reduxjs/toolkit";
-import { IAction, ITask } from "../../STORE/types";
+import { IAction, ITask } from "../../../STORE/types";
 import "./listitem.scss";
 
 const ListItem = ({
@@ -36,7 +36,7 @@ const ListItem = ({
             checked={isCompleted}
             style={{ marginRight: 10 }}
           />
-          <div>{text}</div>
+          <p className="text-wrap">{text}</p>
         </div>
         <CloseCircleTwoTone
           twoToneColor={"#eb2f96"}
