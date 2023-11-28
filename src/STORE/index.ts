@@ -2,7 +2,7 @@ import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import todosReducer from "./slices/todos";
 import postsReducer from "./slices/posts";
 
-const rootReducer = combineReducers({ todosReducer, posts: postsReducer }); //
+const rootReducer = combineReducers({ todosReducer, posts: postsReducer });
 
 export const store = configureStore({
   reducer: rootReducer,
