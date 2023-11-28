@@ -35,6 +35,7 @@ function ToDoList() {
           onChange={createTaskTitle}
           type="text"
           style={{ marginLeft: 10 }}
+          placeholder="Input your new task ..."
         />
         <Button
           onClick={addInfo}

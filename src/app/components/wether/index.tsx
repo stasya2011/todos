@@ -30,7 +30,6 @@ const Weather = () => {
             name: res.location.name,
             icon: res.current.condition ? res.current.condition?.icon : "",
           };
-
           return updated;
         });
       }
