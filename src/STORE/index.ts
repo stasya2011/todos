@@ -3,6 +3,7 @@ import todosReducer from "./slices/todos";
 import postsReducer from "./slices/posts";
 
 const rootReducer = combineReducers({ todosReducer, posts: postsReducer });
+const a = "test";
 
 export const store = configureStore({
   reducer: rootReducer,
